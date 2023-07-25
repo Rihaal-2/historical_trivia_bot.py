@@ -36,7 +36,7 @@ def show_menu(update: Update) -> None:
 def start_quiz(update: Update, context: CallbackContext) -> None:
     """Start the historical trivia quiz."""
     random_question = random.choice(questions)
-    context.user_data['current_question'] = random_question["question"]
+    context.user_data['current_question'] = random_question
     update.message.reply_text(random_question["question"])
 
 def check_answer(update: Update, context: CallbackContext) -> None:
