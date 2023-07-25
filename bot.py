@@ -1,7 +1,7 @@
 import logging
 import random
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters, CallbackQueryHandler
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -10,7 +10,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 # Your Telegram Bot token
-TOKEN = '6383256035:AAGXNgbOgldC5488qNdT93F7FzWNu6lQtNo'
+TOKEN = '6383256035:AAF5crHJHhCxJqwKxYo5C2OAN-in2oVvlnw'
 
 # Historical trivia questions and answers
 questions = [
