@@ -10,7 +10,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 # Your Telegram Bot token
-TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'
+TOKEN = '6383256035:AAGXNgbOgldC5488qNdT93F7FzWNu6lQtNo'
 
 # Historical trivia questions and answers
 questions = [
