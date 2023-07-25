@@ -10,7 +10,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 # Your Telegram Bot token
-TOKEN = '6383256035:AAF5crHJHhCxJqwKxYo5C2OAN-in2oVvlnw'
+TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'
 
 # Historical trivia questions and answers
 questions = [
@@ -36,7 +36,7 @@ def show_menu(update: Update) -> None:
 def start_quiz(update: Update, context: CallbackContext) -> None:
     """Start the historical trivia quiz."""
     random_question = random.choice(questions)
-    context.user_data['current_question'] = random_question
+    context.user_data['current_question'] = random_question["question"]
     update.message.reply_text(random_question["question"])
 
 def check_answer(update: Update, context: CallbackContext) -> None:
