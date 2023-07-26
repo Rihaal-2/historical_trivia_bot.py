@@ -1,7 +1,9 @@
 import logging
 import random
+import os  # Import the os module
+
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters, CallbackQueryHandler
+from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -9,8 +11,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-# Your Telegram Bot token
-TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'
+# Your Telegram Bot token - Retrieve it from the environment variable
+TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 
 # Historical trivia questions and answers
 questions = [
