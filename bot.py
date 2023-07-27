@@ -1,9 +1,8 @@
 import logging
 import random
-import os  # Import the os module
-
+import os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters, CallbackQueryHandler
+from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -37,14 +36,21 @@ def show_menu(update: Update) -> None:
 
 def start_quiz(update: Update, context: CallbackContext) -> None:
     """Start the historical trivia quiz."""
-    random_question = random.choice(questions)
-    context.user_data['current_question'] = random_question
-    update.message.reply_text(random_question["question"])
+    if update.message and update.message.text:
+        random_question = random.choice(questions)
+        context.user_data['current_question'] = random_question
+        update.message.reply_text(random_question["question"])
+    else:
+        update.message.reply_text("Please start the quiz by typing /start.")
 
 def check_answer(update: Update, context: CallbackContext) -> None:
     """Check the user's answer to the current question."""
     user_answer = update.message.text
-    current_question = context.user_data['current_question']
+    current_question = context.user_data.get('current_question')
+    if not current_question:
+        update.message.reply_text("Please start the quiz by typing /start.")
+        return
+
     if user_answer.strip().lower() == current_question["answer"].lower():
         update.message.reply_text("Correct answer! Well done!")
     else:
